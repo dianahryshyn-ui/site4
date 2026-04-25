@@ -1,482 +1,460 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Pink Essence | Fragrance Showcase</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-pink: #ffdae0;
-            --deep-pink: #d84378;
-            --accent-pink: #ff8fa3;
-            --white: #ffffff;
-            --text-dark: #4a2c36;
-            --text-light: #886b76;
-            --shadow: 0 10px 20px rgba(216, 67, 120, 0.15);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Dental Selection</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Lato', sans-serif;
-            background-color: #faf3f5;
-            color: var(--text-dark);
-            padding-bottom: 100px;
-            overflow-x: hidden;
-        }
+<style>
+:root {
+    --primary-blue: #d8ecff;
+    --deep-blue: #1f6fb2;
+    --accent-blue: #63b3ff;
+    --white: #ffffff;
+    --text-dark: #17324d;
+    --shadow: 0 10px 20px rgba(31, 111, 178, 0.16);
+}
 
-        /* --- Header --- */
-        header {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 20px;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--deep-pink);
-            letter-spacing: 1px;
-        }
+body {
+    font-family: 'Lato', sans-serif;
+    background: linear-gradient(180deg, #f2f8ff 0%, #eaf5ff 100%);
+    color: var(--text-dark);
+    padding-bottom: 100px;
+    overflow-x: hidden;
+}
 
-        /* --- Product Grid --- */
-        .container {
-            padding: 15px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+header {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(31,111,178,0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .product-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--deep-blue);
+}
 
-        .product-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 15px;
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: transform 0.2s;
-            position: relative;
-            overflow: hidden;
-        }
+.container {
+    padding: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
 
-        .product-card:active {
-            transform: scale(0.97);
-        }
+.selected-service {
+    background: var(--white);
+    color: var(--deep-blue);
+    border: 1px solid rgba(31,111,178,0.14);
+    box-shadow: var(--shadow);
+    border-radius: 18px;
+    padding: 14px 16px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 700;
+}
 
-        .img-container {
-            width: 100%;
-            height: 140px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 10px;
-        }
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
 
-        .product-img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            border-radius: 10px;
-        }
+.product-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.2s, border-color 0.2s;
+    border: 2px solid transparent;
+}
 
-        .product-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            margin-bottom: 15px; /* Increased margin since price is gone */
-            color: var(--text-dark);
-        }
+.product-card:active {
+    transform: scale(0.97);
+}
 
-        .add-btn {
-            background: var(--primary-pink);
-            color: var(--deep-pink);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            width: 100%;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+.product-card.selected {
+    border-color: var(--accent-blue);
+}
 
-        /* --- Floating Bar --- */
-        .action-bar {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 500px;
-            background: var(--deep-pink);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(216, 67, 120, 0.4);
-            z-index: 1000;
-            cursor: pointer;
-            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+.img-container {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
 
-        .action-bar:active {
-            transform: translateX(-50%) scale(0.95);
-        }
+.product-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 14px;
+}
 
-        .cart-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.add-btn {
+    background: var(--primary-blue);
+    color: var(--deep-blue);
+    border: none;
+    padding: 9px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.82rem;
+    width: 100%;
+    cursor: pointer;
+}
 
-        .cart-count {
-            background: white;
-            color: var(--deep-pink);
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
+.product-card.selected .add-btn {
+    background: var(--deep-blue);
+    color: var(--white);
+}
 
-        .action-text {
-            font-weight: bold;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
+.action-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    background: var(--deep-blue);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(31,111,178,0.35);
+    z-index: 1000;
+    cursor: pointer;
+}
 
-        /* --- Animation Elements --- */
-        .flying-img {
-            position: fixed;
-            z-index: 9999;
-            pointer-events: none;
-            border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: top 0.8s cubic-bezier(0.5, 0, 0.5, 1), 
-                        left 0.8s cubic-bezier(0.5, 0, 0.5, 1), 
-                        width 0.8s ease, 
-                        height 0.8s ease, 
-                        opacity 0.8s ease;
-        }
+.cart-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-        @keyframes bump {
-            0% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.1); }
-            100% { transform: translateX(-50%) scale(1); }
-        }
+.cart-count {
+    background: white;
+    color: var(--deep-blue);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
 
-        .bump-anim {
-            animation: bump 0.3s ease;
-        }
+.action-text {
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
 
-        /* --- Modal --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            z-index: 2000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            flex-direction: column;
-        }
+.flying-img {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: top 0.8s cubic-bezier(0.5,0,0.5,1),
+                left 0.8s cubic-bezier(0.5,0,0.5,1),
+                width 0.8s ease,
+                height 0.8s ease,
+                opacity 0.8s ease;
+}
 
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+@keyframes bump {
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.1); }
+    100% { transform: translateX(-50%) scale(1); }
+}
 
-        .modal-content {
-            text-align: center;
-            padding: 30px;
-            max-width: 400px;
-            width: 100%;
-            overflow: hidden; /* For car animation bounds */
-        }
+.bump-anim {
+    animation: bump 0.3s ease;
+}
 
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--deep-pink);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 40px;
-            box-shadow: 0 10px 20px rgba(216, 67, 120, 0.3);
-            transform: scale(0);
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+.modal-overlay,
+.service-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(242,248,255,0.98);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    padding: 20px;
+}
 
-        .modal-overlay.active .success-icon {
-            transform: scale(1);
-            transition-delay: 0.2s;
-        }
+.modal-overlay.active,
+.service-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
 
-        .modal-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease 0.3s;
-        }
+.service-content {
+    max-width: 420px;
+    width: 100%;
+    display: grid;
+    gap: 12px;
+}
 
-        .modal-overlay.active .modal-title {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.service-btn {
+    width: 100%;
+    border: none;
+    border-radius: 22px;
+    background: var(--white);
+    color: var(--deep-blue);
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 18px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+}
 
-        .request-details {
-            color: var(--text-light);
-            margin-bottom: 40px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease 0.4s;
-        }
+.modal-content {
+    text-align: center;
+    padding: 30px;
+    max-width: 420px;
+    width: 100%;
+    overflow: hidden;
+}
 
-        .modal-overlay.active .request-details {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.success-icon {
+    width: 90px;
+    height: 90px;
+    background: var(--deep-blue);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 35px;
+    color: white;
+    font-size: 44px;
+    box-shadow: 0 10px 20px rgba(31,111,178,0.3);
+}
 
-        .close-btn {
-            background: transparent;
-            border: 2px solid var(--deep-pink);
-            color: var(--deep-pink);
-            padding: 10px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1rem;
-            opacity: 0;
-            transition: all 0.3s ease 0.5s;
-            position: relative;
-            z-index: 10;
-        }
+.car-container {
+    position: relative;
+    height: 170px;
+    width: 100%;
+}
 
-        .modal-overlay.active .close-btn {
-            opacity: 1;
-        }
+.car-svg {
+    position: absolute;
+    left: -260px;
+    width: 240px;
+    height: auto;
+    color: var(--deep-blue);
+}
 
-        /* --- Car Animation --- */
-        .car-container {
-            position: relative;
-            height: 60px;
-            width: 100%;
-            margin-bottom: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .modal-overlay.active .car-container {
-            opacity: 1;
-        }
+@keyframes drive {
+    0% { left: -260px; }
+    40% { left: 50%; transform: translateX(-50%); }
+    65% { left: 50%; transform: translateX(-50%); }
+    100% { left: 120%; }
+}
 
-        .car-svg {
-            position: absolute;
-            left: -100px; /* Start off screen */
-            width: 80px;
-            height: auto;
-            color: var(--deep-pink);
-        }
-
-        /* Keyframes for car driving across */
-        @keyframes drive {
-            0% { left: -100px; transform: scaleX(1); }
-            40% { left: 50%; transform: translateX(-50%) scaleX(1); }
-            60% { left: 50%; transform: translateX(-50%) scaleX(1); }
-            100% { left: 120%; transform: translateX(0) scaleX(1); }
-        }
-
-        .modal-overlay.active .car-svg {
-            animation: drive 3s ease-in-out 0.6s forwards;
-        }
-
-    </style>
+.modal-overlay.active .car-svg {
+    animation: drive 3s ease-in-out 0.3s forwards;
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <h1>Pink Essence</h1>
-    </header>
+<header>
+    <h1>Dental Selection</h1>
+</header>
 
-    <div class="container">
-        <div class="product-grid" id="productGrid">
-            <!-- Products will be injected here via JS -->
+<div class="container">
+    <div class="selected-service" id="selectedServiceText">Choose a service</div>
+    <div class="product-grid" id="productGrid"></div>
+</div>
+
+<div class="action-bar" id="actionBar" onclick="openInsight()">
+    <div class="cart-info">
+        <div class="cart-count" id="cartCount">0</div>
+        <span>Selected</span>
+    </div>
+    <div class="action-text">Continue</div>
+</div>
+
+<div class="service-overlay active" id="serviceModal">
+    <div class="service-content">
+        <button class="service-btn" onclick="selectService('Top and Bottom Braces')">Top and Bottom Braces</button>
+        <button class="service-btn" onclick="selectService('Teeth cleaning')">Teeth cleaning</button>
+        <button class="service-btn" onclick="selectService('Consultation')">Consultation</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="insightModal" onclick="resetApp()">
+    <div class="modal-content">
+        <div class="success-icon">✓</div>
+
+        <div class="car-container">
+            <svg class="car-svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 13V7H20C20.5523 7 21 7.44772 21 8V13H19ZM17 13V6H12V13H17ZM10 13V6H4V13H10ZM10 4H18.5858L21.5858 7H23V14H22C22 15.6569 20.6569 17 19 17C17.3431 17 16 15.6569 16 14H8C8 15.6569 6.65685 17 5 17C3.34315 17 2 15.6569 2 14H1V4C1 2.89543 1.89543 2 3 2H10V4ZM5 15C5.55228 15 6 14.5523 6 14C6 13.4477 5.55228 13 5 13C4.44772 13 4 13.4477 4 14C4 14.5523 4.44772 15 5 15ZM19 15C19.5523 15 20 14.5523 20 14C20 13.4477 19.5523 13 19 13C18.4477 13 18 13.4477 18 14C18 14.5523 18.4477 15 19 15Z"/>
+            </svg>
         </div>
     </div>
+</div>
 
-    <!-- Floating Action Button -->
-    <div class="action-bar" id="actionBar" onclick="openInsight()">
-        <div class="cart-info">
-            <div class="cart-count" id="cartCount">0</div>
-            <span>Items</span>
-        </div>
-        <div class="action-text">GET INSIGHTS</div>
-    </div>
+<script>
+const products = [
+    { id: 1, img: "https://www.image2url.com/r2/default/images/1777130181737-23a704e9-019a-4f66-9a9d-725ce7b0f5bd.png" },
+    { id: 2, img: "https://i.ibb.co/0jCLDrXK/IMG-2102.jpg" },
+    { id: 3, img: "https://i.ibb.co/B5YRrq5r/IMG-2103.jpg" },
+    { id: 4, img: "https://i.ibb.co/bMwqsTdL/IMG-2104.jpg" },
+    { id: 5, img: "https://i.ibb.co/k6X13r2k/IMG-2106.png" },
+    { id: 6, img: "https://i.ibb.co/DPL4Krbd/IMG-2107.png" }
+];
 
-    <!-- Insight/Success Modal -->
-    <div class="modal-overlay" id="insightModal">
-        <div class="modal-content">
-            <div class="success-icon">✓</div>
-            <h2 class="modal-title">Selection Received</h2>
-            <p class="request-details" id="summaryText">
-                We have received your preferences.<br>
-                Preparing your personalized experience.
-            </p>
-            
-            <!-- Car Animation Block -->
-            <div class="car-container">
-                <!-- SVG Car Icon -->
-                <svg class="car-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 13V7H20C20.5523 7 21 7.44772 21 8V13H19ZM17 13V6H12V13H17ZM10 13V6H4V13H10ZM10 4H18.5858L21.5858 7H23V14H22C22 15.6569 20.6569 17 19 17C17.3431 17 16 15.6569 16 14H8C8 15.6569 6.65685 17 5 17C3.34315 17 2 15.6569 2 14H1V4C1 2.89543 1.89543 2 3 2H10V4ZM5 15C5.55228 15 6 14.5523 6 14C6 13.4477 5.55228 13 5 13C4.44772 13 4 13.4477 4 14C4 14.5523 4.44772 15 5 15ZM19 15C19.5523 15 20 14.5523 20 14C20 13.4477 19.5523 13 19 13C18.4477 13 18 13.4477 18 14C18 14.5523 18.4477 15 19 15Z"/>
-                </svg>
+
+let selectedService = "";
+let cart = [];
+
+const grid = document.getElementById("productGrid");
+const cartCountEl = document.getElementById("cartCount");
+const actionBar = document.getElementById("actionBar");
+const selectedServiceText = document.getElementById("selectedServiceText");
+const serviceModal = document.getElementById("serviceModal");
+
+function selectService(service) {
+    selectedService = service;
+    selectedServiceText.textContent = service;
+    serviceModal.classList.remove("active");
+}
+
+function renderProducts() {
+    grid.innerHTML = products.map(product => `
+        <div class="product-card" id="card-${product.id}" onclick="addToCart(event, ${product.id}, '${product.img}')">
+            <div class="img-container">
+                <img src="${product.img}" alt="Option ${product.id}" class="product-img" id="img-${product.id}">
             </div>
-
-            <button class="close-btn" onclick="resetApp()">Continue</button>
+            <button class="add-btn" id="btn-${product.id}">Select</button>
         </div>
-    </div>
+    `).join("");
+}
 
-    <script>
-        // Data Configuration (Updated names and images based on request)
-        const products = [
-            { id: 1, name: "Rose Petals", img: "https://i.pinimg.com/736x/03/4d/10/034d10d645664c85bf8dac2c03b9dc91.jpg" },
-            { id: 2, name: "Floral Fantasy", img: "https://i.pinimg.com/1200x/3e/1b/09/3e1b091b4e61c237c4d0f0adc13865de.jpg" },
-            { id: 3, name: "Peony Blush", img: "https://i.pinimg.com/1200x/0a/9d/91/0a9d91e579872d653daf3243df4598f0.jpg" },
-            { id: 4, name: "Sweet Blossom", img: "https://i.pinimg.com/1200x/a3/dc/fb/a3dcfbb5a41ee5309caba193f779a6fc.jpg" },
-            { id: 5, name: "Velvet Jasmine", img: "https://i.pinimg.com/736x/c8/a4/7f/c8a47f26ddb6da97a80c74e4e199a6f5.jpg" },
-            { id: 6, name: "Ruby Essence", img: "https://i.pinimg.com/736x/1d/e6/43/1de64395f05a08113eef1790c5df3c65.jpg" },
-            { id: 7, name: "Pearl Orchid", img: "https://i.pinimg.com/1200x/41/77/17/4177171a2ceacb07819665068f0f69af.jpg" },
-            { id: 8, name: "Mystic Lavender", img: "https://i.pinimg.com/736x/bf/e0/ab/bfe0ab0255fa4f272e2ec309221e70d1.jpg" },
-            { id: 9, name: "Golden Iris", img: "https://i.pinimg.com/736x/3d/1d/42/3d1d42a5a9b851bf9e58fefd35fd281d.jpg" }
-        ];
+function addToCart(e, id, imgUrl) {
+    e.stopPropagation();
 
-        let cart = [];
-        const grid = document.getElementById('productGrid');
-        const cartCountEl = document.getElementById('cartCount');
-        const actionBar = document.getElementById('actionBar');
+    if (!selectedService) {
+        serviceModal.classList.add("active");
+        return;
+    }
 
-        // Render Products (No Prices)
-        function renderProducts() {
-            grid.innerHTML = products.map(product => `
-                <div class="product-card" onclick="addToCart(event, ${product.id}, '${product.img}')">
-                    <div class="img-container">
-                        <img src="${product.img}" alt="${product.name}" class="product-img" id="img-${product.id}">
-                    </div>
-                    <h3 class="product-title">${product.name}</h3>
-                    <button class="add-btn">Select</button>
-                </div>
-            `).join('');
-        }
+    if (cart.includes(id)) {
+        cart = cart.filter(item => item !== id);
+        document.getElementById(`card-${id}`).classList.remove("selected");
+        document.getElementById(`btn-${id}`).textContent = "Select";
+        updateCartUI();
+        return;
+    }
 
-        // Add to Selection Logic with Animation
-        function addToCart(e, id, imgUrl) {
-            e.stopPropagation();
+    cart.push(id);
+    document.getElementById(`card-${id}`).classList.add("selected");
+    document.getElementById(`btn-${id}`).textContent = "Selected";
 
-            cart.push(id);
-            
-            // Animation logic
-            const sourceImg = document.getElementById(`img-${id}`);
-            const rectStart = sourceImg.getBoundingClientRect();
-            const rectEnd = cartCountEl.getBoundingClientRect();
+    const sourceImg = document.getElementById(`img-${id}`);
+    const rectStart = sourceImg.getBoundingClientRect();
+    const rectEnd = cartCountEl.getBoundingClientRect();
 
-            const flyer = document.createElement('img');
-            flyer.src = imgUrl;
-            flyer.classList.add('flying-img');
-            
-            flyer.style.top = `${rectStart.top}px`;
-            flyer.style.left = `${rectStart.left}px`;
-            flyer.style.width = `${rectStart.width}px`;
-            flyer.style.height = `${rectStart.height}px`;
-            
-            document.body.appendChild(flyer);
+    const flyer = document.createElement("img");
+    flyer.src = imgUrl;
+    flyer.classList.add("flying-img");
 
-            flyer.offsetHeight; // Force reflow
+    flyer.style.top = `${rectStart.top}px`;
+    flyer.style.left = `${rectStart.left}px`;
+    flyer.style.width = `${rectStart.width}px`;
+    flyer.style.height = `${rectStart.height}px`;
 
-            flyer.style.top = `${rectEnd.top}px`;
-            flyer.style.left = `${rectEnd.left}px`;
-            flyer.style.width = '25px';
-            flyer.style.height = '25px';
-            flyer.style.opacity = '0.5';
+    document.body.appendChild(flyer);
+    flyer.offsetHeight;
 
-            setTimeout(() => {
-                flyer.remove();
-                updateCartUI();
-                animateActionBar();
-            }, 800);
-        }
+    flyer.style.top = `${rectEnd.top}px`;
+    flyer.style.left = `${rectEnd.left}px`;
+    flyer.style.width = "25px";
+    flyer.style.height = "25px";
+    flyer.style.opacity = "0.5";
 
-        function updateCartUI() {
-            cartCountEl.textContent = cart.length;
-        }
+    setTimeout(() => {
+        flyer.remove();
+        updateCartUI();
+        animateActionBar();
+    }, 800);
+}
 
-        function animateActionBar() {
-            actionBar.classList.remove('bump-anim');
-            void actionBar.offsetWidth; 
-            actionBar.classList.add('bump-anim');
-        }
+function updateCartUI() {
+    cartCountEl.textContent = cart.length;
+}
 
-        // Insight Modal Logic
-        function openInsight() {
-            if(cart.length === 0) {
-                alert("Please make a selection first.");
-                return;
-            }
-            const modal = document.getElementById('insightModal');
-            const summary = document.getElementById('summaryText');
-            summary.innerHTML = `You have selected <b>${cart.length}</b> fragrances.`;
-            modal.classList.add('active');
-        }
+function animateActionBar() {
+    actionBar.classList.remove("bump-anim");
+    void actionBar.offsetWidth;
+    actionBar.classList.add("bump-anim");
+}
 
-        function resetApp() {
-            const modal = document.getElementById('insightModal');
-            modal.classList.remove('active');
-            
-            // Allow animation to reset visually before clearing data
-            setTimeout(() => {
-                cart = [];
-                updateCartUI();
-            }, 300);
-        }
+function openInsight() {
+    if (!selectedService) {
+        serviceModal.classList.add("active");
+        return;
+    }
 
-        // Initialize
-        renderProducts();
+    if (cart.length === 0) {
+        alert("Please make a selection first.");
+        return;
+    }
 
-    </script>
+    document.getElementById("insightModal").classList.add("active");
+}
+
+function resetApp() {
+    const modal = document.getElementById("insightModal");
+    modal.classList.remove("active");
+
+    setTimeout(() => {
+        cart = [];
+        updateCartUI();
+
+        document.querySelectorAll(".product-card").forEach(card => {
+            card.classList.remove("selected");
+        });
+
+        document.querySelectorAll(".add-btn").forEach(btn => {
+            btn.textContent = "Select";
+        });
+    }, 300);
+}
+
+renderProducts();
+</script>
+
 </body>
 </html>
